@@ -20,4 +20,8 @@
           android:id="@+id/menu_insights"
           android:visible="false" />
 
+    <item android:title="@string/menu_add_event"
+          android:id="@+id/menu_add_event"/>
+
+
 </menu>

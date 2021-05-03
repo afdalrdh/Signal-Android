@@ -214,6 +214,16 @@ public class TextSecurePreferences {
 
   private static final String ARGON2_TESTED = "argon2_tested";
 
+  public static final String DELETE_MEDIA_ONLY = "pref_delete_media_only";
+
+  public static boolean isDeleteMediaOnly(@NonNull Context context) {
+    return getBooleanPreference(context, DELETE_MEDIA_ONLY, false);
+  }
+
+   public static void setDeleteMediaOnly(@NonNull Context context, boolean value) {
+    setBooleanPreference(context, DELETE_MEDIA_ONLY, value);
+  } 
+
   private static final String[] booleanPreferencesToBackup = {SCREEN_SECURITY_PREF,
                                                               INCOGNITO_KEYBORAD_PREF,
                                                               ALWAYS_RELAY_CALLS_PREF,
@@ -500,6 +510,14 @@ public class TextSecurePreferences {
    */
   public static boolean wereLinkPreviewsEnabled(Context context) {
     return getBooleanPreference(context, LINK_PREVIEWS, true);
+  }
+
+  public static boolean isGifSearchInGridLayout(Context context) {
+    return getBooleanPreference(context, GIF_GRID_LAYOUT, false);
+  }
+
+  public static void setIsGifSearchInGridLayout(Context context, boolean isGrid) {
+    setBooleanPreference(context, GIF_GRID_LAYOUT, isGrid);
   }
 
   public static int getNotificationPriority(Context context) {
@@ -1222,6 +1240,10 @@ public class TextSecurePreferences {
 
   public static void setHasSeenVideoRecordingTooltip(Context context, boolean value) {
     setBooleanPreference(context, HAS_SEEN_VIDEO_RECORDING_TOOLTIP, value);
+  }
+
+  public static long getStorageManifestVersion(Context context) {
+    return getLongPreference(context, STORAGE_MANIFEST_VERSION, 0);
   }
 
   public static void setStorageManifestVersion(Context context, long version) {

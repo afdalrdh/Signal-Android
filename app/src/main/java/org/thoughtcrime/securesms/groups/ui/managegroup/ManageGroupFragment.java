@@ -64,6 +64,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.LearnMoreTextView;
 import org.thoughtcrime.securesms.util.views.SimpleProgressDialog;
 import org.thoughtcrime.securesms.wallpaper.ChatWallpaperActivity;
+import org.thoughtcrime.securesms.groups.ui.managegroup.ManageGroupNoteActivity;
 
 import java.util.List;
 import java.util.Locale;
@@ -117,6 +118,7 @@ public class ManageGroupFragment extends LoggingFragment {
   private View                               groupLinkRow;
   private TextView                           groupLinkButton;
   private View                               wallpaperButton;
+  private View                               noteButton;
 
   private final Recipient.FallbackPhotoProvider fallbackPhotoProvider = new Recipient.FallbackPhotoProvider() {
     @Override
@@ -179,6 +181,7 @@ public class ManageGroupFragment extends LoggingFragment {
     groupLinkRow                = view.findViewById(R.id.group_link_row);
     groupLinkButton             = view.findViewById(R.id.group_link_button);
     wallpaperButton             = view.findViewById(R.id.chat_wallpaper);
+    noteButton                  = view.findViewById(R.id.group_note);
 
     return view;
   }
@@ -245,6 +248,7 @@ public class ManageGroupFragment extends LoggingFragment {
       customNotificationsRow.setOnClickListener(v -> CustomNotificationsDialogFragment.create(groupRecipient.getId())
                                                                                       .show(requireFragmentManager(), DIALOG_TAG));
       wallpaperButton.setOnClickListener(v -> startActivity(ChatWallpaperActivity.createIntent(requireContext(), groupRecipient.getId())));
+      noteButton.setOnClickListener(v -> startActivity(ManageGroupNoteActivity.createIntent(requireContext(), groupRecipient.getId())));
     });
 
     if (groupId.isV2()) {
